@@ -27,23 +27,26 @@ public class CustomerResource {
     @GET 
     @Produces("application/json")
     @Path("/insert")
-    public Response insertCustomer() {
-    	
-    	WebApplicationContext appContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
-    	
-    	CustomerBo customerBo = (CustomerBo)appContext.getBean("customerBo");
-    	
-    	Customer customerInTable  = customerBo.findByCustomerId(TEST_CUSTOMER_ID);
-    	if(customerInTable != null){
-    		customerBo.delete(customerInTable);
-    	}
+    public Response insertCustomer()  {
     	
     	Customer customer = new Customer();
-    	customer.setId(TEST_CUSTOMER_ID);
-    	customer.setName(TEST_CUSTOMER_NAME);
-    	
-    	customerBo.save(customer);
-    	
+
+	    	WebApplicationContext appContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
+	    	
+	    	CustomerBo customerBo = (CustomerBo)appContext.getBean("customerBo");
+	    	
+	    	Customer customerInTable  = customerBo.findByCustomerId(TEST_CUSTOMER_ID);
+	    	if(customerInTable != null){
+	    		customerBo.delete(customerInTable);
+	    	}
+	    	
+	    	
+	    	//customer.setId(TEST_CUSTOMER_ID);
+	    	customer.setName(TEST_CUSTOMER_NAME);
+	    	
+	    	customerBo.save(customer);
+  
+	    	
         return Response.status(201).entity(customer).build();
     }
 }
