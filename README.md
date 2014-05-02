@@ -14,7 +14,6 @@ In src/main/resources we create a bean location file called *beanLocation.xml*
 We configure the *datasource* and *session factory* and set up the *Spring automatic component scan*
 
 **datasource**
-'''
 <bean id="dataSource" 
          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -22,11 +21,9 @@ We configure the *datasource* and *session factory* and set up the *Spring autom
 	<property name="username" value="pratik" />
 	<property name="password" value="password" />
 </bean>
-'''
 This is going to add datasource bean to the context and we will be using it later to set up a database connection
 
 **session Factory**
-'''
 <bean id="sessionFactory" 
 class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
  
@@ -47,5 +44,4 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
 	</list>
     </property>
 </bean>
-'''
 
