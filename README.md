@@ -15,7 +15,6 @@ We configure the *datasource* and *session factory* and set up the *Spring autom
 
 **datasource**
 '''
-<!-- Database Configuration -->
 <bean id="dataSource" 
          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	<property name="driverClassName" value="com.mysql.jdbc.Driver" />
