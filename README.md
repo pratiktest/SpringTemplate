@@ -283,7 +283,18 @@ public class Customer implements Serializable {
 		return serialVersionUID;
 	}
 	
-	package com.rest.example.util;
+
+}
+```
+
+####advice for exception handling
+
+We can advice methods in bo for dao exceptions so that all exception handling for database related stuff is done in one place.
+
+*** we can only advice beans that are in spring context. Since dao is in spring context we can advice the methods present in the dao ***
+
+```
+package com.rest.example.util;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
@@ -315,10 +326,6 @@ public class ExceptionHandler {
 		
 	}
 	
-	
-
-}
-
 	
 
 }
