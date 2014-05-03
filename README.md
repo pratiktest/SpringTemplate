@@ -291,7 +291,7 @@ public class Customer implements Serializable {
 
 We can advice methods in bo for dao exceptions so that all exception handling for database related stuff is done in one place.
 
-*** we can only advice beans that are in spring context. Since dao is in spring context we can advice the methods present in the dao ***
+***we can only advice beans that are in spring context. Since dao is in spring context we can advice the methods present in the dao***
 
 ```
 package com.rest.example.util;
