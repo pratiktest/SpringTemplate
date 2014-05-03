@@ -247,7 +247,7 @@ public class CustomerResource {
 
 <span style = "color:red">Note the @Component is redundant here since this is a jersey controller and will not get registered in spring context. I have just kept it here to remind me of my mistake. Anyways it dosent do anything </span>
 
-*** The customer model itself ***
+#### The customer model itself ####
 
 The customer Pojo which we will emit should implement Serializable. It should have proper jackson annotations to serialize and deserialize. Also proper hibernate annotations to map to columns in database
 
