@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 /**
  * 
  * @author prkale
@@ -29,24 +31,43 @@ import javax.xml.bind.annotation.XmlRootElement;
  * during commit.
  * 
  */
-@XmlRootElement
 @Entity
 @Table(name = "Customer")
 public class Customer implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	
-	private int id;
+	private Integer id;
 	private String name;
+	private String address;
+	private Boolean isActive;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "customerId", unique = true, nullable = false)
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	@Column(name = "address")
+	public String getAddress() {
+		return address;
+	}
+	
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	@Column(name = "isActive")
+	public Boolean getIsActive() {
+		return isActive;
+	}
+	
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 	
 	@Column(name = "name", unique = true, nullable = false, length = 10)
@@ -56,6 +77,7 @@ public class Customer implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

@@ -6,8 +6,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import com.rest.example.enums.AckValue;
-import com.rest.example.responsePojo.ErrorPojo;
-import com.rest.example.responsePojo.ResponsePojo;
+import com.rest.example.pojo.errorResponsePojo.ErrorPojo;
+import com.rest.example.pojo.responsePojo.ResponsePojo;
 
 
 /**
@@ -19,7 +19,7 @@ import com.rest.example.responsePojo.ResponsePojo;
  */
 public class ResponseHelper {
 	
-	public static Response constructResponse(Object o, AckValue ackValue){
+	public static Response constructResponse(Object o){
 		
 		ResponsePojo response = new ResponsePojo();
 		response.setAckValue(AckValue.SUCCESS);
@@ -47,11 +47,9 @@ public class ResponseHelper {
 			String message, String errorCode, String applicationJson,
 			String module, MediaType mediatype) {
 		
-		ResponsePojo responsePojo = new ResponsePojo();
-		responsePojo.setAckValue(AckValue.FAILURE);
-		responsePojo.setResponseObject(buildAndGetErrorData(message, errorCode, module));
+		ErrorPojo errorPojo = buildAndGetErrorData(message, errorCode, module);
 		
-		return Response.status(status).entity(responsePojo)
+		return Response.status(status).entity(errorPojo)
 				.type(mediatype).build();
 		
 	}

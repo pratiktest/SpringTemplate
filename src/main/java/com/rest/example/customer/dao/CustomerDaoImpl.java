@@ -1,11 +1,12 @@
 package com.rest.example.customer.dao;
 
-import java.util.List;
-
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.rest.example.customer.model.Customer;
-import com.rest.example.util.CustomHibernateDaoSupport;
 
 /**
  * @author prkale
@@ -23,26 +24,33 @@ import com.rest.example.util.CustomHibernateDaoSupport;
  */
 
 @Repository("customerDao")
-public class CustomerDaoImpl extends CustomHibernateDaoSupport implements CustomerDao {
+@EnableTransactionManagement
+public class CustomerDaoImpl implements CustomerDao {
 
-	public void save(Customer customer) {
-		getHibernateTemplate().save(customer);
-		
-	}
-
-	public void update(Customer customer) {
-		getHibernateTemplate().update(customer);
-		
-	}
-
-	public void delete(Customer customer) {
-		getHibernateTemplate().delete(customer);
-		
-	}
-
+	@Autowired
+	private SessionFactory sessionFactory;
+	 
+	@Transactional
 	public Customer findByCustomerId(int customerId) {
-		List<?> list = getHibernateTemplate().find("from Customer where customerId=?", customerId);
-		return (Customer)(list.get(0));
+		  return (Customer) sessionFactory.getCurrentSession().get(Customer.class, customerId);
+	}
+
+
+	@Transactional
+	public void save(Customer customer) {
+		sessionFactory.getCurrentSession().save(customer);
+	}
+
+	@Transactional
+	public void update(Customer customer) {
+		sessionFactory.getCurrentSession().update(customer);
+		
+	}
+
+	@Transactional
+	public void delete(Customer customer) {
+		sessionFactory.getCurrentSession().delete(customer);
+		
 	}
 
 }

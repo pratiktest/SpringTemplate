@@ -25,8 +25,8 @@ public class ExceptionHandler {
 		logger.debug("Exception occured in "+ jp.getSourceLocation().toString() );
 		
 		ResponseHelper.throwWebApplicationException(Status.INTERNAL_SERVER_ERROR, 
-				"Database Exception", "ErrorCode", AckValue.FAILURE.getValue(), 
-				jp.getClass().getName(), "", MediaType.APPLICATION_JSON_TYPE);
+				"Exception occured in "+ jp.getStaticPart().toShortString(), "ErrorCode", AckValue.FAILURE.getValue(), 
+				"", "", MediaType.APPLICATION_JSON_TYPE);
 		
 	}
 	

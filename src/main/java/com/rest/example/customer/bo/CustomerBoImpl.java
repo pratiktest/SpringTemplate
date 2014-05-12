@@ -2,6 +2,7 @@ package com.rest.example.customer.bo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.rest.example.customer.model.Customer;
 import com.rest.example.customer.dao.CustomerDao;

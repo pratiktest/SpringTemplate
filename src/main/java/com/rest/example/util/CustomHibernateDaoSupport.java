@@ -7,6 +7,8 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 public abstract class CustomHibernateDaoSupport extends HibernateDaoSupport
 {    
     @Autowired
+    protected SessionFactory sessionFactory;
+    
     public void anyMethodName(SessionFactory sessionFactory)
     {
         setSessionFactory(sessionFactory);

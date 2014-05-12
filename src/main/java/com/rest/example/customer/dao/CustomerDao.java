@@ -2,7 +2,6 @@ package com.rest.example.customer.dao;
 
 import com.rest.example.customer.model.Customer;
 
-
 public interface CustomerDao{
 	
 	void save(Customer customer);
